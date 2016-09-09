@@ -11,27 +11,29 @@
             <ul class='list-group'>
                 <li class='list-group-item active'>My Contact List</li>
                 {% for contact in contacts %}
-                    <li class='list-group-item'>{{ contact.getContact }}</li>
+                    <li class='list-group-item'><u>{{ contact.getName }}<u></li>
+                        <li class='list-group-item'>{{ contact.getPhone }}</li>
+                        <li class='list-group-item'>{{ contact.getAddress }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
 
-        <form action='/new_contact' method='post'>
+        <form action='/create_contact' method='post'>
             <div class="form-group">
                 <label for='fullName'>Contact Name</label>
                 <input id='fullName' name='fullName' type='text' class='form-control'>
             </div>
             <div class="form-group">
-                <label for='phone_number'>Phone Number</label>
-                <input id='phone_number' name='phone_number' type='number' class='form-control'>
+                <label for='phoneNumber'>Phone Number</label>
+                <input id='phoneNumber' name='phoneNumber' type='number' class='form-control'>
             </div>
             <div class="form-group">
                 <label for='fullAddress'>Full Address?</label>
-                <input id='jobStart' name='jobStart' type='text' class='form-control'>
+                <input id='fullAddress' name='fullAddress' type='text' class='form-control'>
             </div>
             <button type='submit' class='btn btn-info'>Add A Contact</button>
         </form>
-        <form action='/clear_contacts' method='post'>
+        <form action='/delete_contacts' method='post'>
             <button type='submit' class='btn btn-default'>Clear Contact List</button>
         </form>
     </div>

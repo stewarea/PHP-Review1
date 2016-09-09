@@ -16,16 +16,16 @@
     ));
 
     $app->get("/", function() use ($app){
-        return $app['twig']->render('home.html.twig', array('address' => Contact::getContact()));
+        return $app['twig']->render('home.html.twig', array('contacts' => Contact::getContacts()));
     });
-    $app->post("/new_contact", function() use ($app) {
-        $contact = new Contact($_POST['fullName'], $_POST['phone_number'], $_POST['fullAddress']);
+    $app->post("/create_contact", function() use ($app) {
+        $contact = new Contact($_POST['fullName'], $_POST['phoneNumber'], $_POST['fullAddress']);
         $contact->saveContact();
-        return $app['twig']->render('new_contact.html.twig', array('new_contact' => $contact));
+        return $app['twig']->render('create_contact.html.twig', array('newcontact' => $contact));
     });
-    $app->post("/clear_contacts", function() use ($app) {
+    $app->post("/delete_contacts", function() use ($app) {
             Contact::deleteContacts();
-            return $app['twig']->render('jobs.html.twig');
+            return $app['twig']->render('home.html.twig');
     });
 
     return $app;
