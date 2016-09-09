@@ -25,7 +25,7 @@
     });
     $app->post("/delete_contacts", function() use ($app) {
             Contact::deleteContacts();
-            return $app['twig']->render('home.html.twig');
+            return $app['twig']->render('clear_contacts.html.twig');
     });
 
     return $app;

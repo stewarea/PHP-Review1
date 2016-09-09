@@ -5,15 +5,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>Who Do I Know?</h1>
+        <h1>Address Book</h1></br>
 
         {% if contacts is not empty %}
             <ul class='list-group'>
-                <li class='list-group-item active'>My Contact List</li>
+                <h3>My Contact List</h3>
                 {% for contact in contacts %}
-                    <li class='list-group-item'><u>{{ contact.getName }}<u></li>
-                        <li class='list-group-item'>{{ contact.getPhone }}</li>
-                        <li class='list-group-item'>{{ contact.getAddress }}</li>
+                    <li class='list-group-item active'>{{ contact.getName }}</li>
+                    <li class='list-group-item'>{{ contact.getPhone }}</li>
+                    <li class='list-group-item'>{{ contact.getAddress }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
