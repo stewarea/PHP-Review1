@@ -3,13 +3,15 @@
     {
         private $fullName;
         private $phoneNumber;
-        private $fullAddress;
+        private $fullStreet;
+        private $fullState;
 
-        function __construct($fullName, $phoneNumber, $fullAddress)
+        function __construct($fullName, $phoneNumber, $fullStreet, $fullState)
         {
             $this->fullName = $fullName;
             $this->phoneNumber = $phoneNumber;
-            $this->fullAddress = $fullAddress;
+            $this->fullStreet = $fullStreet;
+            $this->fullState = $fullState;
         }
         function getName()
         {
@@ -29,11 +31,11 @@
         }
         function getAddress()
         {
-            return $this->fullAddress;
+            return $this->fullStreet . " " . $this->fullState;
         }
         function setAddress($full_address)
         {
-            $this->fullAddress = $full_address;
+            $this->fullStreet . " " . $this->fullState = $full_address;
         }
 
         function saveContact()
