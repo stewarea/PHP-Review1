@@ -5,8 +5,8 @@
 
     session_start();
 
-    if (empty($_SESSION['list_of_addresses'])) {
-        $_SESSION['list_of_addresses'] = array();
+    if (empty($_SESSION['list_of_contacts'])) {
+        $_SESSION['list_of_contacts'] = array();
     }
 
     $app = new Silex\Application();
@@ -16,10 +16,16 @@
     ));
 
     $app->get("/", function() use ($app){
-        return $app['twig']->render('home.html.twig', array('address' => Contact::getAddress()));
+        return $app['twig']->render('home.html.twig', array('address' => Contact::getContact()));
     });
-    $app->post("/new_contact", function() use ($app){
-        return $app['twig']->render('new_contact.html.twig', array('address' => Contact::getAddress()));
+    $app->post("/new_contact", function() use ($app) {
+        $contact = new Contact($_POST['fullName'], $_POST['phone_number'], $_POST['fullAddress']);
+        $contact->saveContact();
+        return $app['twig']->render('new_contact.html.twig', array('new_contact' => $contact));
+    });
+    $app->post("/clear_contacts", function() use ($app) {
+            Contact::deleteContacts();
+            return $app['twig']->render('jobs.html.twig');
     });
 
     return $app;

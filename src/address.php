@@ -1,5 +1,5 @@
 <?php
-    class Job
+    class Contact
     {
       private $fullName;
       private $phone_number;
@@ -12,21 +12,21 @@
           $this->fullAddress = $fullAddress;
       }
 
-      function getSummary()
+      // function getSummary()
+      // {
+      //     return $this->fullName, $this->$phone_number, $this->$fullAddress;
+      // }
+      function saveContact()
       {
-          return $this->fullName, $this->$phone_number, $this->$fullAddress;
+        array_push($_SESSION['list_of_contacts'], $this);
       }
-      function saveAddress()
+      static function getContact()
       {
-        array_push($_SESSION)['list_of_addresses'], $this);
+          return $_SESSION['list_of_contacts'];
       }
-      static function getAddress()
+      static function deleteContact()
       {
-          return $_SESSION['list_of_jobs'];
-      }
-      static function deleteAddresses()
-      {
-          $_SESSION['list_of_jobs'];
+          $_SESSION['list_of_contacts'];
       }
    }
  ?>
